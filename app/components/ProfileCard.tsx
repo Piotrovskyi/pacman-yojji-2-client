@@ -1,29 +1,17 @@
 // ./app/components/ProfileCard.tsx
 
-import { Link } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 
 // type definitions for Profile response
 import { type Profile } from "~/utils/types";
 
 // strapi url from environment variables
-const strapiUrl = process.env.STRAPI_API_URL;
+// const strapiUrl = process.env.STRAPI_API_URL;
 
 // helper function to get image url for user
 // we're also using https://ui-avatars.com api to generate images
 // the function appends the image url returned
-const getImgUrl = ({
-  url,
-  username,
-}: {
-  url: string | undefined;
-  username: string | undefined | "A+N";
-}) =>
-  url
-    ? `${strapiUrl}${url}`
-    : `https://ui-avatars.com/api/?name=${username?.replace(
-        " ",
-        "+"
-      )}&background=2563eb&color=fff`;
+
 
 // component accepts `profile` prop which contains the user profile data and
 // `preview` prop which indicates whether the card is used in a list or
@@ -36,6 +24,23 @@ const ProfileCard = ({
   preview: boolean;
 }) => {
   console.log({ profile });
+  const { strapiUrl } = useLoaderData();
+  
+  console.log(strapiUrl, "<<<<<<<");
+
+  const getImgUrl = ({
+    url,
+    username,
+  }: {
+    url: string | undefined;
+    username: string | undefined | "A+N";
+  }) =>
+    url
+      ? `${strapiUrl}${url}`
+      : `https://ui-avatars.com/api/?name=${username?.replace(
+          " ",
+          "+"
+        )}&background=2563eb&color=fff`;
 
   return (
     <>

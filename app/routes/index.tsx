@@ -11,12 +11,14 @@ import { getProfiles } from "~/models/profiles.server";
 type Loaderdata = {
   // this implies that the "profiles type is whatever type getProfiles resolves to"
   profiles: Awaited<ReturnType<typeof getProfiles>>;
+  strapiUrl: string
 };
 
 // loader for route
 export const loader = async () => {
   return json<Loaderdata>({
     profiles: await getProfiles(),
+    strapiUrl: process.env.STRAPI_API_URL,
   });
 };
 
