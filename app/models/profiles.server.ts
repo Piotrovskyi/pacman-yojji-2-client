@@ -1,6 +1,7 @@
 // ./app/models/profiles.server.ts
 
 // import types
+import { getUserData } from "~/utils/session.server";
 import slugify from "~/utils/slugify";
 import type {
   ErrorResponse,
@@ -18,9 +19,15 @@ const strapiApiUrl = process.env.STRAPI_API_URL;
 // const catchError = (res: any) => { if (res.error) throw Error(JSON.stringify(res.error)) }
 
 // function to fetch all profiles
-export const getProfiles = async (): Promise<Array<Profile>> => {
-  const profiles = await fetch(`${strapiApiUrl}/users?populate=profilePic`);
+export const getProfile = async (request: Request): Promise<Profile> => {
+  const data = await getUserData(request);
+  const profiles = await fetch(`${strapiApiUrl}/users/me?populate[user_codes][populate]=*`, {
+    headers: {
+      Authorization: `Bearer ${data?.jwt}`,
+    },
+  });
   let response = await profiles.json();
+  response.jwt = data?.jwt;
   // catchError(response)
   console.log({ response });
   return response;

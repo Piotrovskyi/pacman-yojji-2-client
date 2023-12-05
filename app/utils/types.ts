@@ -54,6 +54,24 @@ export type Profile = {
   profilePic?: SingleMedia | undefined;
   slug?: string;
   error?: any;
+  user_codes?: [UserCode]
+  jwt?: string | undefined;
+};
+
+// user-code data type
+export type UserCode = {
+  description?: string;
+  name: string;
+  file: {
+    id: number;
+    name: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string
+    createdAt: string
+    updatedAt: string
+  }
 };
 
 // profile form data type
@@ -68,6 +86,19 @@ export type ProfileData = {
   // email: string | File | null
   // password: string | File | null
 };
+
+export type UploadUserCodeFormProps = {
+  userCode: UploadUserCodeForm;
+  onModifyData?: Function | undefined;
+  action: string;
+  errors?: any;
+}
+
+export type UploadUserCodeForm = {
+  name: string;
+  description?: string;
+  file: File;
+}
 
 // type for profile form props
 export type ProfileFormProps = {
