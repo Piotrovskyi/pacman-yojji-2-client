@@ -14,7 +14,7 @@ const SiteHeader = ({ user }: { user?: Profile | undefined }) => {
       <div className="wrapper">
         <figure className="site-logo">
           <Link to="/">
-            <h1>Profiles</h1>
+            <h1>Raiting</h1>
           </Link>
         </figure>
         <nav className="site-nav">
@@ -24,7 +24,7 @@ const SiteHeader = ({ user }: { user?: Profile | undefined }) => {
               <>
                 {/* link to user profile */}
                 <li>
-                  <Link to={`/${user?.slug}`}> Hey, {user?.username}! </Link>
+                  <Link to={`/profile`}> Hey, {user?.username}! </Link>
                 </li>
                 {/* Form component to send POST request to the sign out route */}
                 <Form action="/sign-out" method="post" className="link">

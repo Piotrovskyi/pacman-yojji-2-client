@@ -58,6 +58,31 @@ export type Profile = {
   jwt?: string | undefined;
 };
 
+export type Score = {
+  id: number;
+  attributes: {
+    amount: number;
+    createdAt: string;
+    user: {
+      data: {
+        attributes: {
+          email:  string;
+          username: string;
+        }
+      }
+    }
+  }
+}
+
+export type Engine = {
+  id: number;
+  attributes: {
+    name: string;
+    tags: string;
+    description: string;
+  }
+}
+
 // user-code data type
 export type UserCode = {
   description?: string;

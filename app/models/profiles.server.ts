@@ -4,12 +4,14 @@
 import { getUserData } from "~/utils/session.server";
 import slugify from "~/utils/slugify";
 import type {
+  Engine,
   ErrorResponse,
   LoginActionData,
   LoginResponse,
   Profile,
   ProfileData,
   RegisterActionData,
+  Score,
 } from "~/utils/types";
 
 // Strapi API URL from environment varaibles
@@ -31,6 +33,23 @@ export const getProfile = async (request: Request): Promise<Profile> => {
   // catchError(response)
   console.log({ response });
   return response;
+};
+
+export const getTopScores = async (request: Request): Promise<Score[]> => {
+  const engine  = 1;
+  const scores = await fetch(`${strapiApiUrl}/scores?populate[user][fields][0]=username&populate[user][fields][1]=email&sort[0]=amount&pagination[limit]=10&filters[engine][id][$eq]=${engine}`);
+  let response = await scores.json();
+  // catchError(response)
+  console.log({ response });
+  return response.data;
+};
+
+export const getEngines = async (request: Request): Promise<Engine[]> => {
+  const scores = await fetch(`${strapiApiUrl}/engines`);
+  let response = await scores.json();
+  // catchError(response)
+  console.log({ response });
+  return response.data;
 };
 
 // function to get a single profile by it's slug
