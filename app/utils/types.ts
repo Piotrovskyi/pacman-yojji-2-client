@@ -65,6 +65,7 @@ export type Score = {
     createdAt: string;
     user: {
       data: {
+        id: number,
         attributes: {
           email:  string;
           username: string;

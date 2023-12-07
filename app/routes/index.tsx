@@ -26,7 +26,14 @@ export default function Index() {
 
   useEffect(() => {
     getTopScores(strapiUrl, engine)
-      .then(setScores)
+      .then(data => {
+        const scoresByUnicUser = data.reduceRight((acc, score) => {
+          acc[score.attributes?.user.data.id] = score;
+          return acc;
+        }, {} as { [name: number]: Score });
+
+        setScores(Object.values(scoresByUnicUser))
+      })
   }, [strapiUrl, engine])
 
   return (
