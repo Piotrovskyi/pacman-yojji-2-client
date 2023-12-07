@@ -42,25 +42,24 @@ export default function Index() {
           <table className="table m-auto text-gray-400 border-separate space-y-6 text-sm">
             <thead className="bg-blue-500 text-white">
               <tr>
-                <th className="p-3">Id</th>
+                <th className="p-3">N</th>
                 <th className="p-3 text-left">File name</th>
                 <th className="p-3 text-left">Date</th>
                 <th className="p-3 text-left">Score</th>
                 <th className="p-3 text-left">Status</th>
+                <th className="p-3 text-left">Executed At</th>
                 <th className="p-3 text-left">Action</th>
               </tr>
             </thead>
             <tbody>
-            {profile.user_codes.map((code) => (
-              <tr key={code.file?.id} className="bg-blue-200 lg:text-black">
-                <td className="p-3 font-medium">{code.file?.id}</td>
+            {profile.user_codes.map((code, i) => (
+              <tr key={code.file?.id + i} className="bg-blue-200 lg:text-black">
+                <td className="p-3 font-medium">{i+1}</td>
                 <td className="p-3">{code.file?.name}</td>
                 <td className="p-3">{code.file?.createdAt.slice(0, 16)}</td>
-                <td className="p-3 uppercase">???</td>
-
-                <td className="p-3">
-                  Processing...
-                </td>
+                <td className="p-3 uppercase">{code.scores.sort((a,b) => b.amount - a.amount)[0]?.amount}</td>
+                <td className="p-3 uppercase">{code.status}</td>
+                <td className="p-3 uppercase">{code.executedAt?.slice(0, 16)}</td>
                 <td className="p-3 text-center">
                   <a href={`${strapiUrl.slice(0, -4)}${code.file?.url}`} className="text-gray-500 hover:text-gray-100 mr-2">
                     <i className="ri-eye-line text-lg"></i>

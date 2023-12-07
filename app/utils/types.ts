@@ -87,6 +87,11 @@ export type Engine = {
 export type UserCode = {
   description?: string;
   name: string;
+  executedAt: string;
+  status: string;
+  scores: Array<{
+    amount: number;
+  }>
   file: {
     id: number;
     name: string;
