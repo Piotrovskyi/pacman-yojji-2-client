@@ -20,7 +20,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function Index() {
   const { strapiUrl, engines } = useLoaderData() as Loaderdata;
-  const { id } = engines[engines.length -1];
+  const { id } = engines[engines.length -1] || { id: 1 };
   const [engine, setEngine] = useState(String(id));
   const [scores, setScores] = useState<Score[]>([]);
 
