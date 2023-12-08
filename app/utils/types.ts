@@ -90,6 +90,7 @@ export type UserCode = {
   name: string;
   executedAt: string;
   status: string;
+  error: string;
   scores: Array<{
     amount: number;
   }>

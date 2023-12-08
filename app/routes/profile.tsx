@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { type LoaderFunction, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { Tooltip } from 'react-tooltip';
 import { UserCodeUploadForm } from "~/components/UploadFileForm";
 import { getProfile } from "~/models/profiles.server";
+
+import 'react-tooltip/dist/react-tooltip.css'
 
 type Loaderdata = {
   profile: Awaited<ReturnType<typeof getProfile>>;
@@ -58,7 +61,10 @@ export default function Index() {
                 <td className="p-3">{code.file?.name}</td>
                 <td className="p-3">{code.file?.createdAt.slice(0, 16)}</td>
                 <td className="p-3 uppercase">{code.scores.sort((a,b) => b.amount - a.amount)[0]?.amount}</td>
-                <td className="p-3 uppercase">{code.status}</td>
+                <td className="p-3 uppercase cursor-default">
+                  <span data-tooltip-id={`${code.file.id}-error`} data-tooltip-content={code.error}>{code.status}</span>
+                  <Tooltip id={`${code.file.id}-error`} place="top" />
+                </td>
                 <td className="p-3 uppercase">{code.executedAt?.slice(0, 16)}</td>
                 <td className="p-3 text-center">
                   <a href={`${strapiUrl.slice(0, -4)}${code.file?.url}`} className="text-gray-500 hover:text-gray-100 mr-2">

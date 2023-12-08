@@ -871,6 +871,10 @@ select {
   cursor: pointer;
 }
 
+.cursor-default {
+  cursor: default;
+}
+
 .flex-col {
   flex-direction: column;
 }
