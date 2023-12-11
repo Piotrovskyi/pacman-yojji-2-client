@@ -23,7 +23,7 @@ const strapiApiUrl = process.env.STRAPI_API_URL;
 // function to fetch all profiles
 export const getProfile = async (request: Request): Promise<Profile> => {
   const data = await getUserData(request);
-  const profiles = await fetch(`${strapiApiUrl}/users/me?populate[user_codes][populate]=*`, {
+  const profiles = await fetch(`${strapiApiUrl}/users/me?populate[0]=user_codes.scores.engine&populate[1]=user_codes.file`, {
     headers: {
       Authorization: `Bearer ${data?.jwt}`,
     },

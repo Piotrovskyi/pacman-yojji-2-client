@@ -93,6 +93,12 @@ export type UserCode = {
   error: string;
   scores: Array<{
     amount: number;
+    steps: any[];
+    engine: {
+      name: string;
+      id: number;
+      tag: string;
+    }
   }>
   file: {
     id: number;

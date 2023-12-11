@@ -9,6 +9,7 @@ import {
 
 // import compiled styles
 import styles from "./styles/app.css";
+import stylesPacman from "./styles/pacman.css";
 
 import {
   Links,
@@ -39,6 +40,7 @@ export const meta: MetaFunction = () => ({
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: stylesPacman },
     { rel: "stylesheet", href: 'https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css' }
   ];
 };

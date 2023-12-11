@@ -18,7 +18,7 @@ export const UserCodeUploadForm: React.FC<IFormProps> = ({
   onSubmit,
 }) => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center w-full">
       <Formik
         initialValues={initialFormData}
         onSubmit={onSubmit}

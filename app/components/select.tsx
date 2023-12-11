@@ -13,12 +13,9 @@ interface SelectProps {
 
 export const SelectComponent: FC<SelectProps> = memo(function mySelect({ options, label, placeholder, name, setFieldValue }) {
   const onSelect = (newValue: SingleValue<TOption>) => {
-    console.log(newValue);
-    
     setFieldValue(name, newValue?.value || '');
   };
-  console.log(options);
-  
+
   const transformedOptions = options.map(value => ({ value, label: value }));
 
   return (
