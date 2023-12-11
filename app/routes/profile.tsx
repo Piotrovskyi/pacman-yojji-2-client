@@ -77,16 +77,19 @@ export default function Index() {
                 </td>
                 <td className="p-3 uppercase">{code.executedAt?.slice(0, 16)}</td>
                 <td className="p-3 text-center">
-                  <a href={`${strapiUrl.slice(0, -4)}${code.file?.url}`} className="text-gray-500 hover:text-gray-100 mr-2">
-                    <i className="ri-eye-line text-lg"></i>
-                  </a>
+                  {code.file?.url &&
+                    <a href={`${strapiUrl.slice(0, -4)}${code.file?.url}`} className="text-gray-500 hover:text-gray-100 mr-2">
+                      <i className="ri-eye-line text-lg"></i>
+                    </a>
+                  }
                   {
                     score?.steps && (
                       <span
                       className="text-gray-500 hover:text-gray-100 mr-2"
-                      onClick={() => setSteps([...score?.steps].reverse())}>
-                      <i className="ri-play-mini-fill text-lg"></i>
-                    </span>
+                      onClick={() => setSteps([...score?.steps].reverse())}
+                      >
+                        <i className="ri-play-mini-fill text-lg"></i>
+                      </span>
                     )
                   }
                 </td>
