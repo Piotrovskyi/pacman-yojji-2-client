@@ -16,26 +16,21 @@ export const action: ActionFunction = async ({ request }) => {
     const email = formData.get("email");
     const password = formData.get("password");
     const username = formData.get("username");
-    const title = formData.get("job-title");
-    const twitterUsername = formData.get("twitterUsername");
-    const bio = formData.get("bio");
-    const websiteUrl = formData.get("website");
 
     const errors: RegisterActionData = {
       email: email ? null : "Email is required",
       password: password ? null : "Password is required",
       username: username ? null : "Username is required",
-      title: title ? null : "Job title is required",
     };
 
     const hasErrors = Object.values(errors).some((errorMessage) => errorMessage);
 
     if (hasErrors) throw errors;
 
-    console.log({ email, password, username, title, twitterUsername, bio, websiteUrl });
+    console.log({ email, password, username });
 
     // function to register user with user details
-    const { jwt, user, error } = await register({ email, password, username, title, twitterUsername, bio, websiteUrl });
+    const { jwt, user, error } = await register({ email, password, username });
     console.log({ jwt, user, error });
 
     // throw strapi error message if strapi returns an error

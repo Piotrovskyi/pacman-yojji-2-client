@@ -117,6 +117,7 @@ export type ProfileData = {
   slug?: string | null;
   id?: string | File | null;
   username?: string | File | null;
+  nickname?: string | File | null;
   twitterUsername?: string | File | null;
   bio?: string | File | null;
   title?: string | File | null;

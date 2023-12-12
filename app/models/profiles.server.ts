@@ -97,6 +97,7 @@ export const register = async (
   // generate slug from username
   let slug = slugify(data.username?.toString());
   data.slug = slug;
+  data.nickname = data.username;
 
   // make POST request to Strapi Register Auth URL
   const profile = await fetch(`${strapiApiUrl}/auth/local/register`, {

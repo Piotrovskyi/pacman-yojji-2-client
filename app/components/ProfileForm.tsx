@@ -67,61 +67,6 @@ const ProfileForm = ({
                     <em className="text-red-600">{errors.username}</em>
                   ) : null}
                 </div>
-                <div className="form-control">
-                  <label htmlFor="twitterUsername">Twitter username</label>
-                  <input
-                    onChange={(e) =>
-                      updateField({ twitterUsername: e.target.value })
-                    }
-                    value={profileData?.twitterUsername}
-                    id="twitterUsername"
-                    name="twitterUsername"
-                    type="text"
-                    className="form-input"
-                    placeholder="Without the @"
-                  />
-                </div>
-              </div>
-              <div className="form-control">
-                <label htmlFor="bio">Bio</label>
-                <textarea
-                  onChange={(e) => updateField({ bio: e.target.value })}
-                  value={profileData?.bio}
-                  name="bio"
-                  id="bio"
-                  cols={30}
-                  rows={3}
-                  className="form-textarea"
-                ></textarea>
-              </div>
-              <div className="form-group">
-                <div className="form-control">
-                  <label htmlFor="job-title">Job title</label>
-                  <input
-                    onChange={(e) => updateField({ title: e.target.value })}
-                    value={profileData?.title}
-                    id="job-title"
-                    name="job-title"
-                    type="text"
-                    className="form-input"
-                  />
-                  {errors?.title ? (
-                    <em className="text-red-600">{errors.title}</em>
-                  ) : null}
-                </div>
-                <div className="form-control">
-                  <label htmlFor="website">Website link</label>
-                  <input
-                    onChange={(e) =>
-                      updateField({ websiteUrl: e.target.value })
-                    }
-                    value={profileData?.websiteUrl}
-                    id="website"
-                    name="website"
-                    type="url"
-                    className="form-input"
-                  />
-                </div>
               </div>
             </>
           )}
